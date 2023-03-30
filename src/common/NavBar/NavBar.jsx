@@ -1,7 +1,7 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Navbar, Text, Avatar, Dropdown, Item } from "@nextui-org/react";
 import Link from "next/link";
-
+import { Loading } from "@nextui-org/react";
 import Logo from "./Logo";
 import Box from "../Box/Box";
 import { useRouter } from "next/router";
@@ -36,6 +36,38 @@ const NavBar = () => {
         },
     ];
     const lapseLi = collapseLinks[0].name;
+    /* Clima */
+    const [weather, setWeather] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchWeather() {
+            const res = await fetch(
+                "https://api.openweathermap.org/data/2.5/weather?lat=-33.5538400&lon=-71.6076100&appid=088a8dd3ffd2fb73650655f8c113f5d8"
+            );
+            const data = await res.json();
+            setWeather(data);
+            setLoading(false);
+        }
+
+        fetchWeather();
+    }, []);
+    /* casos de temperatura */
+    const temperature = loading ? null : Math.round(weather.main.temp - 273.15)
+    let category;
+
+    if (temperature >= -5 && temperature <= 1) {
+        category = "cubito de hielo";
+    } else if (temperature >= 2 && temperature <= 8) {
+        category = "congelado";
+    } else if (temperature >= 9 && temperature <= 14) {
+        category = "friesito";
+    } else if (temperature >= 15 && temperature <= 20) {
+        category = "calido";
+    } else {
+        category = "infiernal";
+    }
+
     return (
         <>
             <Box>
@@ -77,17 +109,59 @@ const NavBar = () => {
                             },
                         }}
                     >
-                        <Avatar
-                            placement="bottom-right"
-                            bordered
-                            color="primary"
-                            size="md"
-                            src={
-                                "https://github.com/Incmplir/landing-page/blob/main/gentlemanFrogOrange.webp?raw=true"
-                            }
-                        />
+                        <Dropdown placement="bottom-right">
+                            <Navbar.Item>
+                                <Dropdown.Trigger>
+                                    <Avatar
+                                        className="cursor-pointer"
+                                        placement="bottom-right"
+                                        bordered
+                                        color="primary"
+                                        size="md"
+                                        src={
+                                            "https://github.com/Incmplir/landing-page/blob/main/gentlemanFrogOrange.webp?raw=true"
+                                        }
+                                    />
+                                </Dropdown.Trigger>
+                            </Navbar.Item>
+                            <Dropdown.Menu
+                                aria-label="User menu actions"
+                                color="warning"
+                                onAction={(actionKey) =>
+                                    console.log({ actionKey })
+                                }
+                            >
+                                <Dropdown.Item
+                                    key="profile"
+                                    css={{ height: "100%" }}
+                                >
+                                    <h1 className="text-3xl font-bold">
+                                        <span className="text-xl font-medium">
+                                            Acá en mi
+                                        </span>{" "}
+                                        {loading ? (
+                                            <Loading type="default" />
+                                        ) : (
+                                            weather.name
+                                        )}
+                                    </h1>
+                                    <p className="text-xl">
+                                        {loading ? (
+                                            <Loading type="points" />
+                                        ) : (
+                                            `${Math.round(
+                                                weather.main.temp - 273.15
+                                            )}°C`
+                                        )}
+                                    </p>
+                                </Dropdown.Item>
+                                <Dropdown.Item key="settings" withDivider>
+                                    Hoy hace un día... {category}.
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </Navbar.Content>
-                    <Navbar.Collapse >
+                    <Navbar.Collapse>
                         {collapseLinks[0].name.map((name, index) => (
                             <Navbar.CollapseItem
                                 key={index}
