@@ -5,7 +5,7 @@ import React from "react";
 const Jumbotron = () => {
     return (
         <>
-            <section  className="flex sm:flex-row flex-col w-11/12 h-[80vh] z-10 items-center justify-evenly sm:my-12 my-6">
+            <section className="flex sm:flex-row flex-col w-11/12 h-[80vh] z-10 items-center justify-evenly sm:my-12 my-6">
                 <div className="flex flex-col">
                     <h1 className="text-primary-100 text-5xl font-black">
                         Christian Lisantti
@@ -21,6 +21,7 @@ const Jumbotron = () => {
                         <div className="container-logo-2 bg-primary-100/80">
                             <div className="container-logo-3">
                                 <Image
+                                    priority={true}
                                     className="frog h-auto w-11/12"
                                     src="https://github.com/Incmplir/landing-page/blob/main/gentlemanFrogOrange.webp?raw=true"
                                 ></Image>

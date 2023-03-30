@@ -37,6 +37,7 @@ export default function ProyectoPage({ proyecto }) {
                                 <div className="container-logo-2 bg-primary-100/80 ">
                                     <div className="container-logo-3 ">
                                         <Image
+                                        priority={true}
                                             className=""
                                             src={currentImage}
                                             alt={proyecto.title}
