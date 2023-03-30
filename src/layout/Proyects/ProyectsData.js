@@ -13,7 +13,7 @@ export const ProyectsData = [
     {
         title: "Bebé",
         badge: ["vite", "Tailwindcss"],
-        description: "Un proyecto personal desarrollado solo por diversión",
+        description: "Un proyecto personal desarrollado solo por diversión.",
         bgProyect: [
             "https://github.com/Incmplir/landing-page/blob/main/proyectBebe-0.png?raw=true",
             "https://github.com/Incmplir/landing-page/blob/main/proyectBebe-1.png?raw=true",
@@ -22,7 +22,7 @@ export const ProyectsData = [
         ],
         parraph:
             "Proyecto Bebé - Desarrollado por pura diversión en mis ratos libres, Bebé es un proyecto chistoso que muestra a dos bebés luchando en un video 3D mientras una canción emocionante suena de fondo. Al principio, los usuarios son recibidos con una pantalla en negro simple con un botón en el centro. Al hacer clic en el botón, el video 3D aparece con dos bebés luchando mientras otros bebés bailan en el fondo. Este proyecto fue desarrollado usando Vite y Tailwind CSS para crear la pantalla inicial y agregar estilo a la página en general. La simplicidad de la pantalla inicial aumenta el efecto cómico del video 3D que aparece después. Si bien este proyecto fue creado por pura diversión, demuestra mi habilidad para usar herramientas de desarrollo para crear una experiencia única en línea. Además, muestra mi capacidad para crear un proyecto chistoso y entretenido que puede atraer a un público amplio. En resumen, el proyecto Bebé es una adición divertida y creativa a mi portafolio. Muestra mi habilidad para crear una experiencia en línea única y entretenida utilizando herramientas de desarrollo como Vite y Tailwind CSS.",
-        links: ["https://baby-beta.vercel.app/", "https://github.com/Incmplir/bebe-next"],
+        links: ["https://baby-beta.vercel.app/", "https://github.com/Incmplir/bebe-vite"],
     },
     {
         title: "Portafolio",
@@ -39,7 +39,7 @@ export const ProyectsData = [
         title: "Tamíz.LA",
         badge: ["Next.js", "Tailwindcss", "Auth0", "Firebase"],
         description:
-            "Un proyecto ambicioso que llevo desarrollando desde hace un tiempo",
+            "Un proyecto ambicioso que llevo desarrollando desde hace un tiempo.",
         bgProyect: [
             "https://github.com/Incmplir/landing-page/blob/main/proyectTamizLA-0.png?raw=true",
             "https://github.com/Incmplir/landing-page/blob/main/proyectTamizLA-1.png?raw=true",
