@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
-import { Navbar, Text, Avatar, Dropdown, Item } from "@nextui-org/react";
+import {
+    Navbar,
+    Text,
+    Avatar,
+    Dropdown,
+    Item,
+    Button,
+} from "@nextui-org/react";
 import Link from "next/link";
 import { Loading } from "@nextui-org/react";
 import Logo from "./Logo";
 import Box from "../Box/Box";
 import { useRouter } from "next/router";
+import { HiDocumentDownload } from "react-icons/hi";
 const NavBar = () => {
     const router = useRouter();
     const currentPath = router.pathname;
@@ -67,7 +75,13 @@ const NavBar = () => {
     } else {
         category = "infiernal";
     }
-
+/* cv */
+function handleClick() {
+    const router = useRouter();
+  
+    router.push('/otra-direccion');
+  }
+  
     return (
         <>
             <Box>
@@ -131,38 +145,55 @@ const NavBar = () => {
                                 </Dropdown.Trigger>
                             </Navbar.Item>
                             <Dropdown.Menu
+                                disabledKeys={["weather", "settings"]}
                                 aria-label="User menu actions"
                                 color="warning"
-                                onAction={(actionKey) =>
-                                    console.log({ actionKey })
-                                }
                             >
                                 <Dropdown.Item
-                                    key="profile"
-                                    css={{ height: "100%" }}
+                                    key="weather"
+                                    css={{ height: "100%", color: "#fff" }}
+                                    description={`Hoy hace un día... ${category}.`}
                                 >
-                                    <h1 className="text-3xl font-bold">
-                                        <span className="text-xl font-medium">
-                                            Acá en mi
-                                        </span>{" "}
-                                        {loading ? (
-                                            <Loading type="default" />
-                                        ) : (
-                                            weather.name
-                                        )}
-                                    </h1>
-                                    <p className="text-xl">
-                                        {loading ? (
-                                            <Loading type="points" />
-                                        ) : (
-                                            `${Math.round(
-                                                weather.main.temp - 273.15
-                                            )}°C`
-                                        )}
-                                    </p>
+                                    <div className="flex flex-row items-end">
+                                        <h1 className="text-3xl font-bold">
+                                            <span className="text-xl font-medium">
+                                                Acá en mi
+                                            </span>{" "}
+                                            {loading ? (
+                                                <Loading type="default" />
+                                            ) : (
+                                                weather.name
+                                            )}
+                                        </h1>
+                                        <p className="text-4xl">
+                                            {loading ? (
+                                                <Loading type="points" />
+                                            ) : (
+                                                `${Math.round(
+                                                    weather.main.temp - 273.15
+                                                )}°C`
+                                            )}
+                                        </p>
+                                    </div>
                                 </Dropdown.Item>
-                                <Dropdown.Item key="settings" withDivider>
-                                    Hoy hace un día... {category}.
+                                <Dropdown.Item
+                                    key="cv"
+                                        withDivider
+                                >
+                                    
+                                        <Button 
+                                        as={'a'}
+                                        className='w-full h-full flex items-stretch'
+                                        target="_blank"
+                                        href="https://github.com/Incmplir/portfolio-next/raw/main/CV_Christian_Lisantti_Dev.pdf"
+                                        icon={
+                                            <HiDocumentDownload
+                                                size={22}
+                                                fill="var(--nextui-colors-primary)"
+                                            />
+                                        }
+                                        >Mi CV</Button>
+                                    
                                 </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
