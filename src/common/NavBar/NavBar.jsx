@@ -43,7 +43,7 @@ const NavBar = () => {
     useEffect(() => {
         async function fetchWeather() {
             const res = await fetch(
-                "https://api.openweathermap.org/data/2.5/weather?lat=-33.5538400&lon=-71.6076100&appid=088a8dd3ffd2fb73650655f8c113f5d8"
+                `https://api.openweathermap.org/data/2.5/weather?lat=-33.5538400&lon=-71.6076100&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY}`
             );
             const data = await res.json();
             setWeather(data);
@@ -53,7 +53,7 @@ const NavBar = () => {
         fetchWeather();
     }, []);
     /* casos de temperatura */
-    const temperature = loading ? null : Math.round(weather.main.temp - 273.15)
+    const temperature = loading ? null : Math.round(weather.main.temp - 273.15);
     let category;
 
     if (temperature >= -5 && temperature <= 1) {
@@ -71,9 +71,13 @@ const NavBar = () => {
     return (
         <>
             <Box>
-                <Navbar isBordered variant="sticky" css={{
-                            backgroundColor: '#21221c'
-                        }}>
+                <Navbar
+                    isBordered
+                    variant="sticky"
+                    css={{
+                        backgroundColor: "#21221c",
+                    }}
+                >
                     <Navbar.Toggle showIn="xs" />
                     <Navbar.Brand
                         css={{
