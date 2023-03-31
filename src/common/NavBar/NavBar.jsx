@@ -71,7 +71,9 @@ const NavBar = () => {
     return (
         <>
             <Box>
-                <Navbar isBordered variant="sticky">
+                <Navbar isBordered variant="sticky" css={{
+                            backgroundColor: '#21221c'
+                        }}>
                     <Navbar.Toggle showIn="xs" />
                     <Navbar.Brand
                         css={{

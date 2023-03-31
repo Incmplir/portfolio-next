@@ -46,7 +46,6 @@ function MyApp({ Component, pageProps }) {
         <NextUIProvider theme={theme}>
             <NavBar />
             <Component
-                
                 {...pageProps}
             />
             <Footer/>

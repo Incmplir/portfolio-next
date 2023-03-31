@@ -41,7 +41,7 @@ const Body = ({ title, children }) => {
                 {/* IconsGoogle */}
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
             </Head>
-            <main className='selection:bg-primary-100 selection:text-text-100'>
+            <main className='selection:bg-primary-100 selection:text-text-100 bg-bg-200'>
                 <Box>{children}</Box>
             </main>
         </>

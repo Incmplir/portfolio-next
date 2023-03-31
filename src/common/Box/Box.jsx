@@ -11,7 +11,7 @@ import React from "react";
 
 const Box = ({children}) => {
     return (
-        <div className="flex flex-col items-center text-text-100 font-mono selection:bg-primary-100 selection:text-text-100">{children}</div>
+        <div className="flex flex-col items-center text-text-100 font-mono selection:bg-primary-100 selection:text-text-100 bg-bg-200">{children}</div>
     );
 };
 
